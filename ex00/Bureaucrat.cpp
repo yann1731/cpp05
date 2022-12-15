@@ -20,15 +20,6 @@ Bureaucrat::~Bureaucrat()
     std::cout << "Default destructor called" << std::endl;
 }
 
-void Bureaucrat::setGrade(int grade)
-{
-    if (grade < 1)
-        throw (GradeTooHighException());
-    if (grade > 150)
-        throw (GradeTooLowException());
-    _grade = grade;
-}
-
 int Bureaucrat::getGrade(void)
 {
     return (_grade);
@@ -37,4 +28,18 @@ int Bureaucrat::getGrade(void)
 const std::string &Bureaucrat::getName(void)
 {
     return (_name);
+}
+
+void Bureaucrat::promote(void)
+{
+    _grade--;
+    if (_grade <= 0)
+        throw (GradeTooHighException());
+}
+
+void Bureaucrat::demote(void)
+{
+    _grade++;
+    if (_grade > 150)
+        throw (GradeTooLowException());
 }
