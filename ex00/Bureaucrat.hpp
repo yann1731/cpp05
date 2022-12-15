@@ -15,17 +15,11 @@ class Bureaucrat
 	void demote(void);
     class GradeTooLowException: public std::exception
     {
-        virtual const char *what() const throw()
-        {
-            return "Bureaucrat::GradeTooLowException: Grade too low";
-        }
+        virtual const char *what() const throw();
     };
     class GradeTooHighException: public std::exception
     {
-        virtual const char *what() const throw()
-        {
-            return "Bureaucrat::GradeTooHighException: Grade too high";
-        }
+    	const char *what() const throw();
     };
     private:
     const std::string _name;

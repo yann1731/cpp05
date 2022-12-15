@@ -43,3 +43,13 @@ void Bureaucrat::demote(void)
     if (_grade > 150)
         throw (GradeTooLowException());
 }
+
+const char *Bureaucrat::GradeTooHighException::what() const throw()
+{
+    return ("Exception: Grade is too damn high");
+}
+
+const char *Bureaucrat::GradeTooLowException::what() const throw()
+{
+    return ("Exception: Grade is too damn low");
+}
