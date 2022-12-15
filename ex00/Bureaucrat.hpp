@@ -16,14 +16,14 @@ class Bureaucrat
     {
         virtual const char *what() const throw()
         {
-            return "Grade too low";
+            return "Bureaucrat::GradeTooLowException: Grade too low";
         }
     };
     class GradeTooHighException: public std::exception
     {
         virtual const char *what() const throw()
         {
-            return "Grade too high";
+            return "Bureaucrat::GradeTooHighException: Grade too high";
         }
     };
     private:
