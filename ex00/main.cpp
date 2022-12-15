@@ -5,8 +5,10 @@ int main(void)
     Bureaucrat bill("bill", 23);
     try
     {
-        Bureaucrat marvin("Marvin", 4);
+        Bureaucrat marvin("Marvin", 1);
+        Bureaucrat billybob("Billybob", 43243254);
         std::cout << "Marvin's grade is " << marvin.getGrade() << std::endl;
+        std::cout << "Billybob's grade is " << billybob.getGrade() << std::endl;
     }
     catch(const std::exception& e)
     {
