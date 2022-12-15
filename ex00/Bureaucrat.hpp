@@ -1,27 +1,31 @@
 #ifndef BUREAUCRAT_HPP
 #define BUREAUCRAT_HPP
 #include <iostream>
-// Let’s design an artificial nightmare of offices, corridors, forms, and waiting queues.
-// Sounds fun? No? Too bad.
-// First, start by the smallest cog in this vast bureaucratic machine: the Bureaucrat.
-// A Bureaucrat must have:
-// • A constant name.
-// • And a grade that ranges from 1 (highest possible grade) to 150 (lowest possible
-// grade).
-// Any attempt to instantiate a Bureaucrat using an invalid grade must throw an exception:
-// either a Bureaucrat::GradeTooHighException or a Bureaucrat::GradeTooLowException.
+#include <exception>
 
 class Bureaucrat
 {
     public:
     Bureaucrat();
+    Bureaucrat(const std::string name, int grade);
     ~Bureaucrat();
-    
-
-
+    class GradeTooLowException: public std::exception
+    {
+        virtual const char *what() const throw()
+        {
+            return "Grade too low";
+        }
+    };
+    class GradeTooHighException: public std::exception
+    {
+        virtual const char *what() const throw()
+        {
+            return "Grade too high";
+        }
+    };
     private:
-    const std::string name;
-    int grade;
+    const std::string _name;
+    int _grade;
 };
 
 #endif
