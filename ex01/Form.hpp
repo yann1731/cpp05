@@ -17,12 +17,22 @@ class Form
 	public:
 	Form();
 	~Form();
+	const std::string getName(void) const;
+	const bool getSignstatus(void) const;
+	const int getGradeSign(void) const;
+	const int getGradeExec(void) const;
+
 	private:
 	const std::string _name;
 	bool isSigned;
 	const int gradeSign;
 	const int gradeExec;
 };
+
+std::ostream &operator<< (std::ostream &out, const Form &form)
+{
+	
+}
 
 
 #endif
