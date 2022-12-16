@@ -3,6 +3,9 @@
 int main(void)
 {
     Bureaucrat bill("bill", 2);
+    Bureaucrat hellokitty("Hello kitty", 50);
+
+    std::cout << hellokitty;
     try
     {
         Bureaucrat marvin("Marvin", 149);

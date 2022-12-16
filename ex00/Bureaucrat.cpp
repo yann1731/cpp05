@@ -20,12 +20,12 @@ Bureaucrat::~Bureaucrat()
     std::cout << "Default destructor called" << std::endl;
 }
 
-int Bureaucrat::getGrade(void)
+int Bureaucrat::getGrade(void) const
 {
     return (_grade);
 }
 
-const std::string &Bureaucrat::getName(void)
+const std::string &Bureaucrat::getName(void) const
 {
     return (_name);
 }
@@ -42,6 +42,12 @@ void Bureaucrat::demote(void)
     _grade++;
     if (_grade > 150)
         throw (GradeTooLowException());
+}
+
+std::ostream &operator<< (std::ostream &out, const Bureaucrat &bureaucrat)
+{
+    out << bureaucrat.getName() << ", grade " << bureaucrat.getGrade() << std::endl;
+    return (out);
 }
 
 const char *Bureaucrat::GradeTooHighException::what() const throw()
