@@ -2,7 +2,10 @@
 #define BUREAUCRAT_HPP
 #include <iostream>
 #include <exception>
+#include "Form.hpp"
 
+// Lastly, add a signForm() member function to the Bureaucrat. If the form got signed,
+// it will print something like:
 class Bureaucrat
 {
     public:
@@ -13,6 +16,7 @@ class Bureaucrat
 	const std::string &getName(void) const;
     void promote(void);
 	void demote(void);
+    void signForm(const Form &form);
     class GradeTooLowException: public std::exception
     {
         virtual const char *what() const throw();

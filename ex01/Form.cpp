@@ -1,30 +1,5 @@
 #include "Form.hpp"
 
-class Form
-{
-	public:
-	Form();
-	Form(const std::string name, const int gradeSign, const int gradeExec);
-	~Form();
-	const std::string getName(void) const;
-	const bool getSignstatus(void) const;
-	const int getGradeSign(void) const;
-	const int getGradeExec(void) const;
-	class GradeTooLowException: public std::exception
-    {
-        virtual const char *what() const throw();
-    };
-    class GradeTooHighException: public std::exception
-    {
-    	const char *what() const throw();
-    };
-	private:
-	const std::string _name;
-	bool _isSigned;
-	const int _gradeSign;
-	const int _gradeExec;
-};
-
 Form::Form(): _name("Random form"), _gradeExec(1), _gradeSign(1), _isSigned(false)
 {
 	return ;
@@ -42,9 +17,39 @@ Form::Form(const std::string name, const int gradeSign, const int gradeExec): _n
 		throw (GradeTooLowException());	
 }
 
+Form::~Form()
+{
+	return ;
+}
+
+const std::string Form::getName(void) const
+{
+	return (_name);
+}
+
+const int Form::getGradeSign(void) const
+{
+	return (_gradeSign);
+}
+
+const int Form::getGradeExec(void) const
+{
+	return (_gradeExec);
+}
 
 
+const bool Form::getSignstatus(void) const
+{
+	return (_isSigned);
+}
 
+void Form::beSigned(const Bureaucrat& bureaucrat)
+{
+	if (bureaucrat.getGrade() > _gradeSign)
+		throw (GradeTooLowException());
+	else
+		_isSigned = true;
+}
 
 std::ostream &operator<< (std::ostream &out, const Form &form)
 {

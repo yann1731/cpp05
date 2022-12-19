@@ -44,6 +44,11 @@ void Bureaucrat::demote(void)
         throw (GradeTooLowException());
 }
 
+void signForm(const Form &form)
+{
+    form.beSigned();
+}
+
 std::ostream &operator<< (std::ostream &out, const Bureaucrat &bureaucrat)
 {
     out << bureaucrat.getName() << ", bureaucrat grade " << bureaucrat.getGrade() << std::endl;

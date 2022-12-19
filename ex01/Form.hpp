@@ -1,6 +1,7 @@
 #ifndef FORM_HPP
 #define FORM_HPP
 #include <iostream>
+#include "Bureaucrat.hpp"
 
 //needs to throw exception if the grades are out of bounds
 //add a beSigned member function to form that takes a bureaucrat as input
@@ -19,6 +20,7 @@ class Form
 	const bool getSignstatus(void) const;
 	const int getGradeSign(void) const;
 	const int getGradeExec(void) const;
+	void beSigned(const Bureaucrat &bureaucrat);
 	class GradeTooLowException: public std::exception
     {
         virtual const char *what() const throw();
