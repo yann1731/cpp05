@@ -26,8 +26,8 @@ CFLAGS	=	-Wall -Werror -Wextra -std=c++98 -I.
 RM		=	rm -rf
 
 # Dir and file names
-NAME	=	bureaucrat
-SRCS	=	main.cpp Bureaucrat.cpp
+NAME	=	conrad
+SRCS	=	main.cpp Bureaucrat.cpp Form.cpp
 OBJS	=	$(SRCS:.cpp=.o)
 INC		=	$(wildcard *.hpp)
 
@@ -56,3 +56,4 @@ fclean: clean
 
 # Removes objects and executables and remakes
 re: fclean all
+.PHONY: all clean fclean re
