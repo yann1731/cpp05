@@ -44,9 +44,22 @@ void Bureaucrat::demote(void)
         throw (GradeTooLowException());
 }
 
-void signForm(const Form &form)
+void Bureaucrat::signForm(Form &form)
 {
-    form.beSigned();
+    if (form.getSignstatus() == true)
+    {
+        std::cout << this << " cannot sign form because it is already signed!" << std::endl; 
+        return ;
+    }
+    try
+    {
+        form.beSigned(*this);
+    }
+    catch(const std::exception& e)
+    {
+        std::cerr << this << " could not sign, grade insufficient" << std::endl;
+        std::cerr << e.what() << '\n';
+    }
 }
 
 std::ostream &operator<< (std::ostream &out, const Bureaucrat &bureaucrat)

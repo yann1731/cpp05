@@ -16,7 +16,7 @@ class Bureaucrat
 	const std::string &getName(void) const;
     void promote(void);
 	void demote(void);
-    void signForm(const Form &form);
+    void signForm(Form &form);
     class GradeTooLowException: public std::exception
     {
         virtual const char *what() const throw();
