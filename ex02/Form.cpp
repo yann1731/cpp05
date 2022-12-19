@@ -2,12 +2,14 @@
 
 Form::Form(): _name("Random form"), _gradeSign(1), _gradeExec(1)
 {
+	std::cout << "Form default constructor called" << std::endl;
 	_isSigned = false;
 	return ;
 }
 
 Form::Form(const std::string name, const int gradeSign, const int gradeExec): _name(name), _gradeSign(gradeSign), _gradeExec(gradeExec)
 {
+	std::cout << "Form detailed constructor called" << std::endl;
 	_isSigned = false;
 	if (gradeSign < 1)
 		throw (GradeTooHighException());

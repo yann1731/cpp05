@@ -10,12 +10,12 @@ class Form
 	public:
 	Form();
 	Form(const std::string name, const int gradeSign, const int gradeExec);
-	~Form();
-	std::string getName(void) const;
-	bool getSignstatus(void) const;
-	int getGradeSign(void) const;
-	int getGradeExec(void) const;
-	void beSigned(const Bureaucrat &bureaucrat);
+	virtual ~Form();
+	virtual std::string getName(void) const;
+	virtual bool getSignstatus(void) const;
+	virtual int getGradeSign(void) const;
+	virtual int getGradeExec(void) const;
+	virtual void beSigned(const Bureaucrat &bureaucrat);
 	class GradeTooLowException: public std::exception
     {
         virtual const char *what() const throw();
