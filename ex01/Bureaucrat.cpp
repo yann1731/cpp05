@@ -48,23 +48,24 @@ void Bureaucrat::signForm(Form &form)
 {
     if (form.getSignstatus() == true)
     {
-        std::cout << this << " cannot sign form because it is already signed!" << std::endl; 
+        std::cout << *this << " cannot sign form because it is already signed!" << std::endl; 
         return ;
     }
     try
     {
         form.beSigned(*this);
+
     }
     catch(const std::exception& e)
     {
-        std::cerr << this << " could not sign, grade insufficient" << std::endl;
-        std::cerr << e.what() << '\n';
+        std::cerr << e.what() << " :";
+        std::cerr << *this << " could not sign, grade insufficient" << std::endl;
     }
 }
 
 std::ostream &operator<< (std::ostream &out, const Bureaucrat &bureaucrat)
 {
-    out << bureaucrat.getName() << ", bureaucrat grade " << bureaucrat.getGrade() << std::endl;
+    out << bureaucrat.getName() << ", bureaucrat grade " << bureaucrat.getGrade();
     return (out);
 }
 

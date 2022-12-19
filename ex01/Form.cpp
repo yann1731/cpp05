@@ -1,12 +1,14 @@
 #include "Form.hpp"
 
-Form::Form(): _name("Random form"), _gradeExec(1), _gradeSign(1), _isSigned(false)
+Form::Form(): _name("Random form"), _gradeSign(1), _gradeExec(1)
 {
+	_isSigned = false;
 	return ;
 }
 
-Form::Form(const std::string name, const int gradeSign, const int gradeExec): _name(name), _gradeSign(gradeSign), _gradeExec(gradeExec), _isSigned(false)
+Form::Form(const std::string name, const int gradeSign, const int gradeExec): _name(name), _gradeSign(gradeSign), _gradeExec(gradeExec)
 {
+	_isSigned = false;
 	if (gradeSign < 1)
 		throw (GradeTooHighException());
 	if (gradeSign > 150)
@@ -22,28 +24,28 @@ Form::~Form()
 	return ;
 }
 
-const std::string Form::getName(void) const
+std::string Form::getName(void) const
 {
 	return (_name);
 }
 
-const int Form::getGradeSign(void) const
+int Form::getGradeSign(void) const
 {
 	return (_gradeSign);
 }
 
-const int Form::getGradeExec(void) const
+int Form::getGradeExec(void) const
 {
 	return (_gradeExec);
 }
 
 
-const bool Form::getSignstatus(void) const
+bool Form::getSignstatus(void) const
 {
 	return (_isSigned);
 }
 
-void Form::beSigned(const Bureaucrat& bureaucrat)
+void Form::beSigned(const Bureaucrat &bureaucrat)
 {
 	if (bureaucrat.getGrade() > _gradeSign)
 		throw (GradeTooLowException());
@@ -57,4 +59,14 @@ std::ostream &operator<< (std::ostream &out, const Form &form)
 	"Required grade to sign: " << form.getGradeSign() << std::endl << "Required grade to execute: " << \
 	form.getGradeExec() << std::endl;
 	return (out);
+}
+
+const char *Form::GradeTooHighException::what() const throw()
+{
+    return ("Exception: Grade is too damn high");
+}
+
+const char *Form::GradeTooLowException::what() const throw()
+{
+    return ("Exception: Grade is too damn low");
 }

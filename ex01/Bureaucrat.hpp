@@ -1,8 +1,11 @@
 #ifndef BUREAUCRAT_HPP
-#define BUREAUCRAT_HPP
-#include <iostream>
-#include <exception>
-#include "Form.hpp"
+# define BUREAUCRAT_HPP
+# include <iostream>
+# include <exception>
+# include "Form.hpp"
+
+class Bureaucrat;
+class Form;
 
 // Lastly, add a signForm() member function to the Bureaucrat. If the form got signed,
 // it will print something like:
@@ -23,7 +26,7 @@ class Bureaucrat
     };
     class GradeTooHighException: public std::exception
     {
-    	const char *what() const throw();
+    	virtual const char *what() const throw();
     };
     private:
     const std::string _name;
