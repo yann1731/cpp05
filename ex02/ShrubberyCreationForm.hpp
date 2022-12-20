@@ -7,6 +7,7 @@ class ShrubberyCreationForm: public Form
 {
     public:
     ShrubberyCreationForm();
+    ShrubberyCreationForm(std::string &target);
     ~ShrubberyCreationForm();
     std::string getName(void) const;
     int getGradeSign(void) const;
@@ -21,6 +22,8 @@ class ShrubberyCreationForm: public Form
     {
     	virtual const char *what() const throw();
     };
+    private:
+    std::string _target;
 };
 
 #endif

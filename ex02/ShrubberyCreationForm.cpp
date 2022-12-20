@@ -2,12 +2,6 @@
 
 // class ShrubberyCreationForm: public Form
 // {
-//     ShrubberyCreationForm();
-//     ~ShrubberyCreationForm();
-//     std::string getName(void) const;
-//     int getGradeSign(void) const;
-//     int getGradeExec(void) const;
-//     bool getSignStatus(void) const;
 //     void beSigned(const Bureaucrat &bureaucrat);
 //     class GradeTooLowException: public std::exception
 //     {
@@ -19,7 +13,43 @@
 //     };
 // };
 
-ShrubberyCreationForm::ShrubberyCreationForm(): Form("Shrubbery creation form", 145, 137), target(target);
+ShrubberyCreationForm::ShrubberyCreationForm(): Form("Shrubbery creation form", 145, 137)
+{
+    _target = "default";
+    return ;
+}
+
+ShrubberyCreationForm::ShrubberyCreationForm(std::string &target): Form("Shrubbery creation form", 145, 137)
 {
 
+    _target = target;
+    std::cout << "new shrubbery form created" << std::endl;
+    return ;
 }
+
+ShrubberyCreationForm::~ShrubberyCreationForm()
+{
+    std::cout << "default shrubbery form destructor called" << std::endl;
+    return ;
+}
+
+std::string ShrubberyCreationForm::getName(void) const
+{
+    return (this->getName());
+}
+
+int ShrubberyCreationForm::getGradeSign(void) const
+{
+    return (this->getGradeSign());
+}
+
+int ShrubberyCreationForm::getGradeExec(void) const
+{
+    return (this->getGradeExec());
+}
+
+bool ShrubberyCreationForm::getSignStatus(void) const
+{
+    return (this->getSignstatus());
+}
+
