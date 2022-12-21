@@ -63,6 +63,16 @@ void Form::setSignStatus(const Bureaucrat &bureaucrat)
 		throw (GradeTooLowException());
 }
 
+void Form::execute(const Bureaucrat &bureaucrat) const
+{
+	if (bureaucrat.getGrade() > this->getGradeExec())
+		throw (GradeTooLowException());
+	else if (this->getSignstatus() == false)
+		throw ("Form is not signed!");
+	else
+		bureaucrat.executeForm(this);
+}
+
 std::ostream &operator<< (std::ostream &out, const Form &form)
 {
 	out << "Form: " << form.getName() << std::endl << "sign status: " << form.getSignstatus() << std::endl << \

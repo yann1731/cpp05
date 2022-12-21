@@ -17,6 +17,7 @@ class Form
 	int getGradeExec(void) const;
 	void beSigned(const Bureaucrat &bureaucrat);
 	void setSignStatus(const Bureaucrat &bureaucrat);
+	void execute(const Bureaucrat &bureaucrat) const;
 	class GradeTooLowException: public std::exception
     {
         const char *what() const throw();
