@@ -22,39 +22,6 @@ RobotomyRequestForm::~RobotomyRequestForm()
     return ;
 }
 
-std::string RobotomyRequestForm::getName(void) const
-{
-    return (this->getName());
-}
-
-int RobotomyRequestForm::getGradeSign(void) const
-{
-    return (this->getGradeSign());
-}
-
-int RobotomyRequestForm::getGradeExec(void) const
-{
-    return (this->getGradeExec());
-}
-
-bool RobotomyRequestForm::getSignStatus(void)
-{
-    return (this->getSignstatus());
-}
-
-void RobotomyRequestForm::beSigned(const Bureaucrat &bureaucrat)
-{
-	this->setSignStatus(bureaucrat);
-}
-
-void RobotomyRequestForm::setSignStatus(const Bureaucrat &bureaucrat)
-{
-    if (bureaucrat.getGrade() <= this->getGradeSign())
-		this->setSignStatus(bureaucrat);
-	else
-		throw (GradeTooLowException());
-}
-
 const char *RobotomyRequestForm::GradeTooHighException::what() const throw()
 {
     return ("Exception: Grade is too damn high");

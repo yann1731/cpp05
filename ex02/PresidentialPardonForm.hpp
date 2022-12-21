@@ -8,12 +8,6 @@ class PresidentialPardonForm: public Form
     PresidentialPardonForm();
     PresidentialPardonForm(std::string &target);
     ~PresidentialPardonForm();
-    std::string getName(void) const;
-    int getGradeSign(void) const;   
-    int getGradeExec(void) const;
-    bool getSignStatus(void);
-    void beSigned(const Bureaucrat &bureaucrat);
-    void setSignStatus(const Bureaucrat &bureaucrat);
     class GradeTooLowException: public std::exception
     {
         virtual const char *what() const throw();
