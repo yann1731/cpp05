@@ -64,3 +64,11 @@ const char *RobotomyRequestForm::GradeTooHighException::what() const throw()
 {
     return ("Exception: Grade is too damn high");
 }
+
+std::ostream &operator<<(std::ostream &out, const RobotomyRequestForm &robotomyRequestForm)
+{
+    out << "Form name: " << robotomyRequestForm.getName() << "\n" << "Required grade to sign: " << \
+    robotomyRequestForm.getGradeSign() << "\n" << "Required grade to execute: " << robotomyRequestForm.getGradeExec()\
+    << "\n" << "Status of the form: " << robotomyRequestForm.getSignstatus() << std::endl;
+    return (out);
+}

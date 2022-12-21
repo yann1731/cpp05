@@ -4,6 +4,7 @@
 // Informs that <target> has been pardoned by Zaphod Beeblebrox.
 class PresidentialPardonForm: public Form
 {
+    public:
     PresidentialPardonForm();
     PresidentialPardonForm(std::string &target);
     ~PresidentialPardonForm();
@@ -24,3 +25,5 @@ class PresidentialPardonForm: public Form
     private:
     std::string _target; 
 };
+
+std::ostream &operator<<(std::ostream &out, const PresidentialPardonForm &presidentialPardonForm);

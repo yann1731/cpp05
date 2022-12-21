@@ -72,3 +72,10 @@ const char *ShrubberyCreationForm::GradeTooHighException::what() const throw()
 {
     return ("Exception: Grade is too damn high");
 }
+
+std::ostream &operator<<(std::ostream out, const ShrubberyCreationForm &shrubberyCreationForm)
+{
+    out << "Form name: " << shrubberyCreationForm.getName() << "\n" << "Required grade to sign: " << \
+    shrubberyCreationForm.getGradeSign() << "\n" << "Required grade to execute: " << shrubberyCreationForm.getGradeExec()\
+    << "\n" << "Status of the form: " << shrubberyCreationForm.getSignstatus() << std::endl;
+}
