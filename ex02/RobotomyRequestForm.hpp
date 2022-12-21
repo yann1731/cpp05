@@ -7,7 +7,7 @@ class RobotomyRequestForm: public Form
     RobotomyRequestForm(std::string &target);
     ~RobotomyRequestForm();
     std::string getName(void) const;
-    int getGradeSign(void) const;   
+    int getGradeSign(void) const;
     int getGradeExec(void) const;
     bool getSignStatus(void);
     void beSigned(const Bureaucrat &bureaucrat);

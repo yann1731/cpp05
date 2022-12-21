@@ -52,10 +52,7 @@ bool ShrubberyCreationForm::getSignStatus(void) const
 
 void ShrubberyCreationForm::beSigned(const Bureaucrat &bureaucrat)
 {
-    if (bureaucrat.getGrade() > this->getGradeSign())
-		throw (GradeTooLowException());
-	else
-		this->setSignStatus(bureaucrat);
+	this->setSignStatus(bureaucrat);
 }
 
 void ShrubberyCreationForm::setSignStatus(const Bureaucrat &bureaucrat)
@@ -66,11 +63,12 @@ void ShrubberyCreationForm::setSignStatus(const Bureaucrat &bureaucrat)
 		throw (GradeTooLowException());
 }
 
-class GradeTooLowException: public std::exception
+const char *ShrubberyCreationForm::GradeTooHighException::what() const throw()
 {
-    virtual const char *what() const throw();
-};
-class GradeTooHighException: public std::exception
+    return ("Exception: Grade is too damn high");
+}
+
+const char *ShrubberyCreationForm::GradeTooHighException::what() const throw()
 {
-	virtual const char *what() const throw();
-};
+    return ("Exception: Grade is too damn high");
+}
