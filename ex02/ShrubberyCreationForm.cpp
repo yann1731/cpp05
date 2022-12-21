@@ -2,7 +2,6 @@
 
 // class ShrubberyCreationForm: public Form
 // {
-//     void beSigned(const Bureaucrat &bureaucrat);
 //     class GradeTooLowException: public std::exception
 //     {
 //         virtual const char *what() const throw();
@@ -13,17 +12,15 @@
 //     };
 // };
 
-ShrubberyCreationForm::ShrubberyCreationForm(): Form("Shrubbery creation form", 145, 137)
+ShrubberyCreationForm::ShrubberyCreationForm(): Form("Shrubbery creation form", 145, 137), _target("default")
 {
-    _target = "default";
+    std::cout << "new default shrubbery form created" << std::endl;
     return ;
 }
 
-ShrubberyCreationForm::ShrubberyCreationForm(std::string &target): Form("Shrubbery creation form", 145, 137)
+ShrubberyCreationForm::ShrubberyCreationForm(std::string &target): Form("Shrubbery creation form", 145, 137), _target(target)
 {
-
-    _target = target;
-    std::cout << "new shrubbery form created" << std::endl;
+    std::cout << "new target shrubbery form created" << std::endl;
     return ;
 }
 
@@ -53,3 +50,27 @@ bool ShrubberyCreationForm::getSignStatus(void) const
     return (this->getSignstatus());
 }
 
+void ShrubberyCreationForm::beSigned(const Bureaucrat &bureaucrat)
+{
+    if (bureaucrat.getGrade() > this->getGradeSign())
+		throw (GradeTooLowException());
+	else
+		this->setSignStatus(bureaucrat);
+}
+
+void ShrubberyCreationForm::setSignStatus(const Bureaucrat &bureaucrat)
+{
+    if (bureaucrat.getGrade() <= this->getGradeSign())
+		this->setSignStatus(bureaucrat);
+	else
+		throw (GradeTooLowException());
+}
+
+class GradeTooLowException: public std::exception
+{
+    virtual const char *what() const throw();
+};
+class GradeTooHighException: public std::exception
+{
+	virtual const char *what() const throw();
+};

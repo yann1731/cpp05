@@ -16,6 +16,7 @@ class Form
 	virtual int getGradeSign(void) const;
 	virtual int getGradeExec(void) const;
 	virtual void beSigned(const Bureaucrat &bureaucrat);
+	virtual void setSignStatus(const Bureaucrat &bureaucrat);
 	class GradeTooLowException: public std::exception
     {
         virtual const char *what() const throw();

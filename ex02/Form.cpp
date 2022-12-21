@@ -55,6 +55,14 @@ void Form::beSigned(const Bureaucrat &bureaucrat)
 		_isSigned = true;
 }
 
+void Form::setSignStatus(const Bureaucrat &bureaucrat)
+{
+	if (bureaucrat.getGrade() <= this->_gradeSign)
+		_isSigned = true;
+	else
+		throw (GradeTooLowException());
+}
+
 std::ostream &operator<< (std::ostream &out, const Form &form)
 {
 	out << "Form: " << form.getName() << std::endl << "sign status: " << form.getSignstatus() << std::endl << \
