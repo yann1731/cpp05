@@ -9,12 +9,6 @@ class ShrubberyCreationForm: public Form
     ShrubberyCreationForm();
     ShrubberyCreationForm(std::string &target);
     ~ShrubberyCreationForm();
-    std::string getName(void) const;
-    int getGradeSign(void) const;
-    int getGradeExec(void) const;
-    bool getSignStatus(void) const;
-    void beSigned(const Bureaucrat &bureaucrat);
-    void setSignStatus(const Bureaucrat &bureaucrat);
     class GradeTooLowException: public std::exception
     {
         virtual const char *what() const throw();

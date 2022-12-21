@@ -15,6 +15,16 @@ PresidentialPardonForm::~PresidentialPardonForm()
     std::cout << "default presidential pardon form created" << std::endl;
 }
 
+const char *PresidentialPardonForm::GradeTooHighException::what() const throw()
+{
+    std::cout << "Exception: Grade is too damn high";
+}
+
+const char *PresidentialPardonForm::GradeTooLowException::what() const throw()
+{
+    std::cout << "Exception: Grade is too damn low";
+}
+
 std::ostream &operator<< (std::ostream &out, const PresidentialPardonForm &presidentialPardonForm)
 {
     out << "Form name: " << presidentialPardonForm.getName() << "\n" << "Required grade to sign: " << \
